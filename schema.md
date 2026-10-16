@@ -41,6 +41,7 @@ et une faute de frappe peut changer la categorie de chacun.
 
 <u>schema relationnel: </u>
 <br>
+
 - PLATS (<b> id_plat </b>, nom, prix, #id_categorie)
 - CATEGORIES (<b> id_categorie </b>, nom)
 - COMMANDES (<b> id_commande </b>, date)
@@ -52,3 +53,27 @@ et une faute de frappe peut changer la categorie de chacun.
 
 - On place la quantite dans la table `ligne_commandes` car elle relie
  un plat et sa quantite avec une commande.
+
+
+ ### <u> Étape 4 – Les Les habitués </u>
+
+<u>Nouveau</u>: Creation de la table `clients` et ajout de colonne id_client dans `commandes`.
+<br><br>
+
+<u>schema relationnel: </u>
+<br>
+
+
+- PLATS (<b> id_plat </b>, nom, prix, #id_categorie)
+- CATEGORIES (<b> id_categorie </b>, nom)
+- CLIENTS (<b> id_client </b>, nom)
+- COMMANDES (<b> id_commande </b>, date, #id_client)
+- LIGNE_COMMANDES (<b> id_ligne_commande </b>, #id_commande, #id_plat, quantite)
+
+<br>
+
+<u>Question piege</u>:  <br>
+
+- La cle etrangere n'est pas `NOT NULL` car on ne peut pas ajouter la contrainte si 
+la colonne qu'on vient de creer n'accepte pas de valeurs nulles.
+- Pour ne pas perdre une seule commande (qui n'a pas de client), on utilise `FULL JOIN`.

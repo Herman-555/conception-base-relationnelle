@@ -1,8 +1,11 @@
 SELECT 
-    c.id_commande, 
-    c.date, 
-    SUM(l.quantite * p.prix) AS montant_total 
-    FROM commandes c 
-    JOIN ligne_commandes l ON c.id_commande = l.id_commande
-    JOIN plats p ON l.id_plat = p.id_plat
-    GROUP BY c.id_commande, c.date;
+    com.id_commande, 
+    com.date AS date_commande,
+    CASE 
+        WHEN com.id_client IS NOT NULL THEN cli.nom
+        ELSE 'Client de passage'
+    END AS nom_client
+      FROM commandes com 
+      FULL JOIN clients cli ON com.id_client = cli.id_client 
+    ORDER BY date_commande ASC ;
+    
