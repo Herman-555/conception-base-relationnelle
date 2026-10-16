@@ -1,4 +1,8 @@
-SELECT c.nom as nom_categorie, count(p.*) as nombre_plats 
-	from plats p RIGHT JOIN categories c ON p.id_categorie = c.id_categorie
-	GROUP BY c.id_categorie 
-    ORDER BY nom_categorie ASC;
+SELECT 
+    c.id_commande, 
+    c.date, 
+    SUM(l.quantite * p.prix) AS montant_total 
+    FROM commandes c 
+    JOIN ligne_commandes l ON c.id_commande = l.id_commande
+    JOIN plats p ON l.id_plat = p.id_plat
+    GROUP BY c.id_commande, c.date;

@@ -24,7 +24,6 @@ ajout de la cle etrangere id_categorie dans la table `plats`.
 CATEGORIES (<b> id_categorie </b>, nom)
 PLATS (<b> id_plat </b>, nom, prix, #id_categorie)
 
-
 <br>
 
 <u>Question piege</u>: 
@@ -35,3 +34,21 @@ car le nom de la categorie saisie est redontante, sensible, non maintenable.
 et une faute de frappe peut changer la categorie de chacun.
 
 
+### <u> Étape 3 – Les commandes </u>
+
+<u>Nouveau</u>: Creation de la table `commandes` et `ligne_commandes`.
+<br><br>
+
+<u>schema relationnel: </u>
+<br>
+- PLATS (<b> id_plat </b>, nom, prix, #id_categorie)
+- CATEGORIES (<b> id_categorie </b>, nom)
+- COMMANDES (<b> id_commande </b>, date)
+- LIGNE_COMMANDES (<b> id_ligne_commande </b>, #id_commande, #id_plat, quantite)
+
+<br>
+
+<u>Question piege</u>:  <br>
+
+- On place la quantite dans la table `ligne_commandes` car elle relie
+ un plat et sa quantite avec une commande.
