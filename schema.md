@@ -55,7 +55,7 @@ et une faute de frappe peut changer la categorie de chacun.
  un plat et sa quantite avec une commande.
 
 
- ### <u> Étape 4 – Les Les habitués </u>
+### <u> Étape 4 – Les habitués </u>
 
 <u>Nouveau</u>: Creation de la table `clients` et ajout de colonne id_client dans `commandes`.
 <br><br>
@@ -77,3 +77,33 @@ et une faute de frappe peut changer la categorie de chacun.
 - La cle etrangere n'est pas `NOT NULL` car on ne peut pas ajouter la contrainte si 
 la colonne qu'on vient de creer n'accepte pas de valeurs nulles.
 - Pour ne pas perdre une seule commande (qui n'a pas de client), on utilise `FULL JOIN`.
+
+
+### <u> Étape 5 – Serveurs et tables </u>
+
+<u>Nouveau</u>: Creation de la table `tables` et la table `serveurs`.
+Ajout des colonnes id_table et id_serveur dans `commandes`.
+<br><br>
+
+
+<u>schema relationnel: </u>
+<br>
+
+
+- PLATS (<b> id_plat </b>, nom, prix, #id_categorie)
+- CATEGORIES (<b> id_categorie </b>, nom)
+- CLIENTS (<b> id_client </b>, nom)
+- COMMANDES (<b> id_commande </b>, date, #id_client, #id_table, #id_serveur )
+- LIGNE_COMMANDES (<b> id_ligne_commande </b>, #id_commande, #id_plat, quantite)
+- TABLES (<b> id_table </b>)
+- SERVEURS (<b> id_serveur </b>, nom)
+- TABLES (<b> id_table </b>)
+
+<br>
+
+<u>Question piege</u>:  <br>
+
+- Commande et table sont deux choses differentes: Une table peut avoir plusieurs commandes
+et une commande peut ne pas avoir de table.
+- Le nom de table `table` pose probleme car c'est un mot reserve de SQL.
+
