@@ -1,0 +1,1 @@
+SELECT nom,prix FROM plats ORDER BY prix DESC ;
